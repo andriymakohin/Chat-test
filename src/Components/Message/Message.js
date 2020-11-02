@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import "./Message.scss";
@@ -8,6 +8,17 @@ const Message = ({ message, contacts, me }) => {
     return moment(timestamp).format("LLL");
   };
   message.sort((a, b) => a.date - b.date);
+
+ let messagesEnd = React.createRef()
+  
+ const scrollToBottom = () => {
+    messagesEnd.scrollIntoView({ behavior: "smooth" });
+  }
+
+  useEffect(() => {
+    scrollToBottom();
+  },)
+
 
   return (
     <div className="messages-block">
@@ -24,6 +35,7 @@ const Message = ({ message, contacts, me }) => {
           </div>
         </div>
       ))}
+      <div ref={(el) => {messagesEnd = el; }}></div>
     </div>
   );
 };

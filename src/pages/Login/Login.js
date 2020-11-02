@@ -7,6 +7,7 @@ import styles from "./Login.module.css";
 
 const CLIENT_ID =
   "103633925093-14i76rmintbq72196nfi2344cf2nko2p.apps.googleusercontent.com";
+  // "103633925093-knsdgjt9l80fe7kjqq5camlg351quq1r.apps.googleusercontent.com"
 const errorLogin = (response) => {
   console.log(response);
 };

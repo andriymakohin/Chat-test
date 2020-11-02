@@ -32,6 +32,7 @@ const MessageViwe = ({
       method: "get",
       url: "https://api.chucknorris.io/jokes/random?category=music",
     }).then((response) => response.data);
+
   joke().then((response) => (valueJoke = response.value));
   const handleChange = (e) => {
     const { value } = e.target;
@@ -39,23 +40,27 @@ const MessageViwe = ({
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     if (history.message.length > 0) {
+      e.preventDefault();
       addMessage(history);
-      setRandomeMessage((el) => ({ ...el, message: valueJoke }));
     }
     setMessage((el) => ({ ...el, message: "" }));
+    setTimeout(() => {
+      setRandomeMessage((el) => ({ ...el, message: valueJoke }));
+    }, 6000);
+    console.log(randomeMessage)
   };
+  
   useEffect(() => {
-    if (randomeMessage.message.length > 0) {
-      setTimeout(() => {
+    if (randomeMessage.message !== "") {
         addMessage(randomeMessage);
-      }, 6000);
     }
   }, [randomeMessage]);
 
+  
+
   return (
-    <div className={windowWidth < 740 && "messagesOff" && displayOff}>
+    <div className={windowWidth < 740 ? "messagesOff"  && displayOff : ""}>
       <div className={"messages"}>
         <div className="receiver">
           <picture className="image-block">

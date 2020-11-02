@@ -14,7 +14,7 @@ const ContactList = ({ contacts, openMessage,displayOn,displayOk,windowWidth }) 
     contacts.sort((a,b) => (b.history.map(e=>(e.date))[0] - a.history.map(e=>(e.date))[0]))
 
     return (
-        <div className={windowWidth < 740 && displayOk}>
+        <div className={windowWidth < 740 ? displayOk : ""}>
             <h2  className="title">Chats</h2>
             <ul className="list">
                 {contacts.map(contact => (
