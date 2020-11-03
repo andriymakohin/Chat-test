@@ -52,4 +52,5 @@ Message.propTypes = {
       message: PropTypes.string,
     })
   ).isRequired,
+  me: PropTypes.string.isRequired,
 };
